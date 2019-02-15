@@ -9,6 +9,8 @@
 import UIKit
 
 //модель User для JSON
+
+// Раздели на разные файлы каждую модель
 struct User: Decodable {
 	
 	var id      : Double?

@@ -9,7 +9,7 @@
 import UIKit
 
 final class ProxyManager {
-	
+	// Синглтон
 	static let shared = ProxyManager()
 	private init(){}
 	
@@ -19,13 +19,13 @@ final class ProxyManager {
 				comlition(imageGet)
 			}
 		} else {
-		
-		PhotoLoadManager.shared.loadPhotoURL(url: url) {(image) in
-			CacheManager.shared.saveData(stringKey: url, image: image)
-			DispatchQueue.main.async {
-			comlition(image)
+			// отступы были нарушены, я поправил
+			PhotoLoadManager.shared.loadPhotoURL(url: url) {(image) in
+				CacheManager.shared.saveData(stringKey: url, image: image)
+				DispatchQueue.main.async {
+					comlition(image)
+				}
 			}
-		 }
 		}
 	}
 }

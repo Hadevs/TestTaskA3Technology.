@@ -24,8 +24,11 @@ class UserDetaiCollectionViewCell: UICollectionViewCell {
 			}
 		}
 	}
+	// проверь работу с множеством ячеек, скорее всего у тебя неправильное
+	// переиспользование
 	
 	override func awakeFromNib() {
+		super.awakeFromNib() // не забывай про супер методы
 		activityLoadPhoto.activityIndicator(on: true)
 		photoImageView.addShadowAndRoundedCorners()
 		viewImageView.addShadowAndRoundedCorners()

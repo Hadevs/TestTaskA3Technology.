@@ -9,18 +9,19 @@
 import UIKit
 
 final class CacheManager {
-	
+	// синглтон
 	static let shared = CacheManager()
 	private init(){}
 	
 	let cache = NSCache<NSString, UIImage>()
-	
-	func saveData(stringKey: String?, image: UIImage){
+	// функцию переименовал, поменяй в других местах тоже
+	func save(image: UIImage, for stringKey: String?) {
 		guard let key = stringKey as NSString? else { return }
 		cache.setObject(image, forKey: key)
 	}
 	
-	func getData(stringKey: String?) -> UIImage? {
+	// аналогично
+	func image(by stringKey: String?) -> UIImage? {
 		guard let key = stringKey as NSString? else { return nil }
 		if let image = cache.object(forKey: key) {
 			return image

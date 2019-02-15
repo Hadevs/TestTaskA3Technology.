@@ -9,7 +9,6 @@
 import Foundation
 
 enum URL_API: String {
-	
 	case generalURL = "https://jsonplaceholder.typicode.com/"
 	case users      = "https://jsonplaceholder.typicode.com/users/"
 	case photo      = "https://jsonplaceholder.typicode.com/photos/"

@@ -9,24 +9,24 @@
 import UIKit
 
 class UsersViewController: UIViewController {
-//MARK: --- VARIBELS
+	//MARK: --- VARIBELS
 	private var arrayUser = [User]()
 	let parseUser = ParseJSONUsers()
-//MARK: --- OUTLETS
+	//MARK: --- OUTLETS
 	@IBOutlet weak var userTableView    : UITableView!
 	@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-//MARK: --- LOAD
+	//MARK: --- LOAD
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		//проверка интернета
 		activityIndicator.activityIndicator(on: true)
 		if !Reachability.shared.isConnectedToNetwork() {
-		 	Reachability.shared.alertVC(vc: self)
+			Reachability.shared.alertVC(vc: self)
 		} else {
-		settingSelfController()
+			settingSelfController()
 		}
 	}
-//MARK: --- FUNCTIONS
+	//MARK: --- FUNCTIONS
 	private func settingSelfController(){
 		
 		let parseJSON = ParseJSON(parseJSON: parseUser)
@@ -37,13 +37,13 @@ class UsersViewController: UIViewController {
 			self.userTableView.reloadData()
 		}
 		
-//		JSONManager.shared.parseUsers() { [unowned self] (users) in
-//			self.arrayUser = users
-//			self.activityIndicator.activityIndicator(on: false)
-//			self.userTableView.reloadData()
-//		}
+		//		JSONManager.shared.parseUsers() { [unowned self] (users) in
+		//			self.arrayUser = users
+		//			self.activityIndicator.activityIndicator(on: false)
+		//			self.userTableView.reloadData()
+		//		}
 	}
-//MARK: --- SEGUES
+	//MARK: --- SEGUES
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == ID.SgUser_UserDetail.rawValue {
 			guard let user = sender as? User else { return }
@@ -59,7 +59,8 @@ extension  UsersViewController: UITableViewDataSource {
 	}
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
 		let cell = tableView.dequeueReusableCell(withIdentifier: UsersTableViewCell.identifire, for: indexPath) as! UsersTableViewCell
-		cell.user = arrayUser[indexPath.row]
+		cell.user = arrayUser[indexPath.row] // вынеси это внутрь функции ячейки
+		// func configure(by model)
 		return cell
 	}
 }

@@ -9,7 +9,7 @@
 import UIKit
 
 final class PhotoLoadManager {
-	
+	// В идеальной архитектуре Синглтонам не место, почитай про Dependency Injection
 	static let shared = PhotoLoadManager()
 	
 	func loadPhotoURL(url: String?, complition: @escaping Clousure<UIImage>){

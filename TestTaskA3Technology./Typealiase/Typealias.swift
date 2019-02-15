@@ -6,6 +6,5 @@
 //  Copyright © 2019 GurobaDeveloper. All rights reserved.
 //
 
-
-typealias Clousure<T>   = (T) -> Void
-
+// лишние отступы
+typealias Clousure<T> = (T) -> Void
